@@ -5,7 +5,7 @@ import java.util.Random;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
-public class Battleship implements Grid {
+public class Battleship extends Game {
 	int turn = 0;
 	Button[][] grid = new Button[5][5];
 	GridPane Battleboard = new GridPane();
@@ -18,63 +18,42 @@ public class Battleship implements Grid {
 		for (int i = 0; i < 5; i++) {
 			for (int a = 0; a < 5; a++) {
 				grid[i][a] = new Button();
-				grid[i][a].setMaxSize(150, 150);
+				grid[i][a].setMinSize(150, 150);
 				Battleboard.add(grid[i][a], i, a);
+				setOnClickEvents(grid[i][a]);
 			}
 		}
 		Random random = new Random();
-		int x = random.nextInt();
+		int xBoat = random.nextInt(5);
+		int yBoat = random.nextInt(5);
+		System.out.println(xBoat + " " + yBoat);
+		grid[xBoat][yBoat].setOnAction(value -> {
+			System.out.println("Winner!");
+			grid[xBoat][yBoat].setText("Winner");
+		});
 
-		setOnClickEvents();
 		return Battleboard;
 	}
 
-	int k = 0;
-	int j = 0;
-
-	private void setOnClickEvents() {
+	private void setOnClickEvents(Button btn) {
 		System.out.println("Onclicked");
-		for (; k < 5; k++) {
-			for (; j < 5; j++) {
-				grid[k][j].setOnAction(value -> {
-					System.out.println("Button clicked");
-					removeButton(k, j);
-				});
-			}
-		}
+		btn.setOnAction(value -> {
+			System.out.println("Button clicked");
+			removeButton(btn);
+		});
+
 	}
 
-	private void removeButton(int k, int j) {
-		grid[k][j].setStyle("fx-background-color: #ff7c7c");
-		grid[k][j].setOnAction(value -> {
+	private void removeButton(Button btn) {
+		btn.setText("X");
+		btn.setOnAction(value -> {
 		});
 	}
 
 	@Override
-	public boolean checkForWin() {
-
-		if (true) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	@Override
-	public boolean switchTurns() {
-		turn++;
-		if (turn % 2 == 1) {
-			return false;
-		} else {
-			return true;
-		}
-
-	}
-
-	@Override
-	public void win() {
+	public int switchTurn() {
 		// TODO Auto-generated method stub
-
+		return 0;
 	}
 
 }

@@ -19,7 +19,7 @@ public class Main extends Application {
 
 			Button TTT = new Button("Tic Tac Toe");
 			TTT.setMaxSize(200, 200);
-			Boat.setTranslateX(-100);
+			Boat.setTranslateX(100);
 			Boat.setTranslateY(0);
 
 			Boat.setOnAction((event) -> {
@@ -32,7 +32,7 @@ public class Main extends Application {
 			});
 
 			TTT.setOnAction((event) -> {
-				Battleship Game = new Battleship();
+				TicTacToe Game = new TicTacToe();
 				Game.setupBoard();
 				root.getChildren().removeAll(Boat, TTT);
 				Scene BattleBoard = new Scene(Game.setupBoard(), 750, 750);

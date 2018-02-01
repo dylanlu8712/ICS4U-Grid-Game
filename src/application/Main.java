@@ -7,11 +7,14 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	//Setup of the stage for JavaFx.
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			//Makes first gridpane.
 			GridPane root = new GridPane();
-
+			
+			//Sets up boat and ttt buttons.
 			Button Boat = new Button("Battleship");
 			Boat.setMaxSize(200, 200);
 			Boat.setTranslateX(400);
@@ -21,7 +24,8 @@ public class Main extends Application {
 			TTT.setMaxSize(200, 200);
 			Boat.setTranslateX(100);
 			Boat.setTranslateY(0);
-
+			
+			//Action events for boat and ttt. Also switches scenes into the new games.
 			Boat.setOnAction((event) -> {
 				Battleship Game = new Battleship();
 				Game.setupBoard();
@@ -51,6 +55,7 @@ public class Main extends Application {
 		}
 	}
 
+	//Launches the game.
 	public static void main(String[] args) {
 		launch(args);
 	}

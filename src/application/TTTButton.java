@@ -5,7 +5,7 @@ public class TTTButton extends TicTacToe {
 
 	public TTTButton() {
 	}
-
+	//Overloaded methods. Also chooses to put X or O.
 	public boolean chooseXO(TTTButton a) {
 		if (turn % 2 == 0) {
 			return true;

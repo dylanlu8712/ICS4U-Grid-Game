@@ -5,9 +5,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
 public class TicTacToe extends Game {
+	//Sets up board.
 	Button[][] ticTacToeBoard = new Button[3][3];
 	Label winner = new Label();
-
+	
+	//Checks for win if all X or all O in a row.
 	public boolean checkForWin() {
 		if (((ticTacToeBoard[0][0].getText() == ticTacToeBoard[0][1].getText()
 				&& ticTacToeBoard[0][1].getText() == ticTacToeBoard[0][2].getText())
@@ -38,11 +40,13 @@ public class TicTacToe extends Game {
 			return false;
 	}
 
+	//Switches the turns.
 	public int switchTurn() {
 		turn++;
 		return turn;
 	}
-
+	
+	//Sets up the board with all the buttons and the pane. Also has event handlers for all the buttons.
 	public StackPane setupBoard() {
 		TicTacToe button1 = new TTTButton();
 		TicTacToe button2 = new TTTButton();
